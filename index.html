@@ -6,10 +6,23 @@
           embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
 
           window.addEventListener("onEmbeddedMessagingReady", () => {
+
+            embeddedservice_bootstrap.userVerificationAPI.setIdentityToken(
+              {
+                identityTokenType: "JWT",
+                identityToken: "eyJraWQiOiIxMjM0NSIsImFsZyI6IlJTMjU2In0.eyJpc3MiOiJ0ZXN0SXNzdWVyIiwic3ViIjoidXNlcjEiLCJleHAiOjE3NDI0NzExNjAsImlhdCI6MTc0MjQ2NTE2MH0.a1mxKPOpl0CDEBVedj28_MSWViLenYja2_Dsrg1XHPuRsvPUsDbpQndzfiYJoyEwepl-N8gztK_iDSEYCPGGmqy5g3ufP3FgXZmQvnt2FPnh0hUxzYt44LOirywwFPK3BSA0L-kl8DBxWULfmkJcjtK6Dm3JjQ-7KefFGlWHAlkl8S_bGUyT9b-DDBwe6iuiTKj-V4QUbAZtTwkFrAGNFt7FZ56kV0lJzl5ASB9vUT_6jPRZ6igQ2nLz28ljEo6K3a1xFYqtanvWD6PHCu3TDJrqXOcwlIVVbIGVrhf3WKpGFs4mvUgBnNx8O-nxsa9p19kr3ZaJLfuJiXmpVUcvEg",
+              }
+            );
+            
             embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields(
               {
-                "UUID" : "01959503-0ec0-717c-93f0-ac7ebb046e0b",
-                "Skill_Topic" : "Sports Betting"
+                "Skill_Brand" : "Tipico",
+                "Skill_Country" : "qwerty",
+                "Skill_Entity" : "TCL",
+                "Skill_Language" : "English",
+                "Skill_Segmentation" : "VIP Top/High",
+                "Skill_Topic" : "Sports Betting",
+                "UUID" : "01959503-0ec0-717c-93f0-ac7ebb046e0b"
               }
             );
           });
