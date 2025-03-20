@@ -7,6 +7,8 @@
 
           window.addEventListener("onEmbeddedMessagingReady", () => {
 
+            console.log("onEmbeddedMessagingReady event");
+
             embeddedservice_bootstrap.userVerificationAPI.setIdentityToken(
               {
                 identityTokenType: "JWT",
