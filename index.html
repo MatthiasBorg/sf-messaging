@@ -162,14 +162,7 @@
 
                     window.addEventListener("onEmbeddedMessagingReady", () => {
                         console.log("onEmbeddedMessagingReady event");
-
-                        if (!sessionCleared) {
-                            console.log('Current Session Cleared: ' + sessionCleared);
-                            console.log('Clearing Session...');
-                            embeddedservice_bootstrap.userVerificationAPI.clearSession(true);
-                            sessionCleared = true;
-                        }
-
+                        
                         console.log('AUTH...');
                         embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
                             identityTokenType: "JWT",
@@ -187,6 +180,8 @@
                             "UUID": uuid
                         });
                     });
+
+                    embeddedservice_bootstrap.userVerificationAPI.clearSession(true);
 
                     embeddedservice_bootstrap.init(
                         '00DPw0000092B8g',
