@@ -1,48 +1,197 @@
-<html>
-  <body>
-    <script type='text/javascript'>
-      function initEmbeddedMessaging() {
-        try {
-          embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
-
-          window.addEventListener("onEmbeddedMessagingReady", () => {
-
-            console.log("onEmbeddedMessagingReady event");
-
-            embeddedservice_bootstrap.userVerificationAPI.setIdentityToken(
-              {
-                identityTokenType: "JWT",
-                identityToken: "eyJraWQiOiIxMjM0NSIsImFsZyI6IlJTMjU2In0.eyJpc3MiOiJ0ZXN0SXNzdWVyIiwic3ViIjoidXNlcjEiLCJleHAiOjE3NDI0NzExNjAsImlhdCI6MTc0MjQ2NTE2MH0.a1mxKPOpl0CDEBVedj28_MSWViLenYja2_Dsrg1XHPuRsvPUsDbpQndzfiYJoyEwepl-N8gztK_iDSEYCPGGmqy5g3ufP3FgXZmQvnt2FPnh0hUxzYt44LOirywwFPK3BSA0L-kl8DBxWULfmkJcjtK6Dm3JjQ-7KefFGlWHAlkl8S_bGUyT9b-DDBwe6iuiTKj-V4QUbAZtTwkFrAGNFt7FZ56kV0lJzl5ASB9vUT_6jPRZ6igQ2nLz28ljEo6K3a1xFYqtanvWD6PHCu3TDJrqXOcwlIVVbIGVrhf3WKpGFs4mvUgBnNx8O-nxsa9p19kr3ZaJLfuJiXmpVUcvEg",
-              }
-            );
-            
-            embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields(
-              {
-                "Skill_Brand" : "Tipico",
-                "Skill_Country" : "qwerty",
-                "Skill_Entity" : "TCL",
-                "Skill_Language" : "English",
-                "Skill_Segmentation" : "VIP Top/High",
-                "Skill_Topic" : "Sports Betting",
-                "UUID" : "01959503-0ec0-717c-93f0-ac7ebb046e0b"
-              }
-            );
-          });
-          
-          embeddedservice_bootstrap.init(
-            '00DPw0000092B8g',
-            'Test_MIAW_GIT',
-            'https://tipico--miaw.sandbox.my.site.com/ESWTestMIAWGIT1741941825256',
-            {
-              scrt2URL: 'https://tipico--miaw.sandbox.my.salesforce-scrt.com'
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Embedded Messaging</title>
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body {
+                background-color: #f8f9fa;
             }
-          );
-        } catch (err) {
-          console.error('Error loading Embedded Messaging: ', err);
-        }
-      };
-    </script>
-    
-    <script type='text/javascript' src='https://tipico--miaw.sandbox.my.site.com/ESWTestMIAWGIT1741941825256/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
-  </body>
+            .container {
+                max-width: 600px;
+                margin-top: 50px;
+                padding: 20px;
+                background: white;
+                border-radius: 8px;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <h2 class="text-center mb-4">Embedded Messaging</h2>
+
+            <!-- Person Selection -->
+            <div class="mb-3">
+                <label for="personSelect" class="form-label">Select Person</label>
+                <select id="personSelect" class="form-select">
+                    <option value="testPerson1">Test Person 1</option>
+                    <option value="testPerson2">Test Person 2</option>
+                    <!-- <option value="Unknown">Unknown</option> -->
+                </select>
+            </div>
+
+            <!-- Skill Brand -->
+            <div class="mb-3">
+                <label for="skillBrand" class="form-label">Skill Brand</label>
+                <input list="skillBrandOptions" id="skillBrand" class="form-control" placeholder="Select or enter Skill Brand">
+                <datalist id="skillBrandOptions">
+                    <option value="Tipico"></option>
+                    <option value="Other"></option>
+                </datalist>
+            </div>
+
+            <!-- Skill Country -->
+            <div class="mb-3">
+                <label for="skillCountry" class="form-label">Skill Country</label>
+                <input list="skillCountryOptions" id="skillCountry" class="form-control" placeholder="Select or enter Skill Country">
+                <datalist id="skillCountryOptions">
+                    <option value="Germany"></option>
+                    <option value="Austria"></option>
+                    <option value="Other"></option>
+                </datalist>
+            </div>
+
+            <!-- Skill Entity -->
+            <div class="mb-3">
+                <label for="skillEntity" class="form-label">Skill Entity</label>
+                <input list="skillEntityOptions" id="skillEntity" class="form-control" placeholder="Select or enter Skill Entity">
+                <datalist id="skillEntityOptions">
+                    <option value="TCL"></option>
+                    <option value="TKAL"></option>
+                    <option value="TGAL"></option>
+                    <option value="TSAV"></option>
+                    <option value="Other"></option>
+                </datalist>
+            </div>
+
+            <!-- Skill Language -->
+            <div class="mb-3">
+                <label for="skillLanguage" class="form-label">Skill Language</label>
+                <input list="skillLanguageOptions" id="skillLanguage" class="form-control" placeholder="Select or enter Skill Language">
+                <datalist id="skillLanguageOptions">
+                    <option value="German"></option>
+                    <option value="English"></option>
+                    <option value="Turkish"></option>
+                    <option value="Other"></option>
+                </datalist>
+            </div>
+
+            <!-- Skill Segmentation -->
+            <div class="mb-3">
+                <label for="skillSegmentation" class="form-label">Skill Segmentation</label>
+                <input list="skillSegmentationOptions" id="skillSegmentation" class="form-control" placeholder="Select or enter Skill Segmentation">
+                <datalist id="skillSegmentationOptions">
+                    <option value="VIP Top/High"></option>
+                    <option value="Other"></option>
+                </datalist>
+            </div>
+
+            <!-- Skill Topic -->
+            <div class="mb-3">
+                <label for="skillTopic" class="form-label">Skill Topic</label>
+                <input list="skillTopicOptions" id="skillTopic" class="form-control" placeholder="Select or enter Skill Topic">
+                <datalist id="skillTopicOptions">
+                    <option value="Sports Betting"></option>
+                    <option value="Games"></option>
+                    <option value="Account"></option>
+                    <option value="Payments"></option>
+                    <option value="GDPR"></option>
+                    <option value="Responsible Gambling"></option>
+                    <option value="Verification"></option>
+                    <option value="Unknown"></option>
+                    <option value="Other"></option>
+                    <option value="Instore"></option>
+                </datalist>
+            </div>
+
+            <!-- Start Chat Button -->
+            <button id="startChatBtn" class="btn btn-primary w-100" onclick="initEmbeddedMessaging()">Start Chat</button>
+        </div>
+
+        <script type="text/javascript">
+            function initEmbeddedMessaging() {
+                try {
+                    // Disable button
+                    document.getElementById("startChatBtn").disabled = true;
+
+                    const selectedPerson = document.getElementById("personSelect").value;
+                    const skillBrand = document.getElementById("skillBrand").value;
+                    const skillCountry = document.getElementById("skillCountry").value;
+                    const skillEntity = document.getElementById("skillEntity").value;
+                    const skillLanguage = document.getElementById("skillLanguage").value;
+                    const skillSegmentation = document.getElementById("skillSegmentation").value;
+                    const skillTopic = document.getElementById("skillTopic").value;
+
+                    console.log('Selected Person: ' + selectedPerson);
+                    console.log('Skill Brand: ' + skillBrand);
+                    console.log('Skill Country: ' + skillCountry);
+                    console.log('Skill Entity: ' + skillEntity);
+                    console.log('Skill Language: ' + skillLanguage);
+                    console.log('Skill Segmentation: ' + skillSegmentation);
+                    console.log('Skill Topic: ' + skillTopic);
+
+                    // UUID Mapping for each user
+                    const uuids = {
+                        testPerson1: "d4cd8366-88e7-492f-84fa-baeda4f4fe6e",
+                        testPerson2: "37679f3c-7260-4332-b354-314d4cb7a8fd",
+                    };
+
+                    // JWT Mapping for each user
+                    const jwtTokens = {
+                        testPerson1: "eyJraWQiOiIxMjM0NSIsImFsZyI6IlJTMjU2In0.eyJpc3MiOiJ0ZXN0SXNzdWVyIiwic3ViIjoiZDRjZDgzNjYtODhlNy00OTJmLTg0ZmEtYmFlZGE0ZjRmZTZlIiwiZXhwIjoxNzQyOTA1MTczLCJpYXQiOjE3NDI0NzMxNzN9.N4Jl_jU1cvvuhhNgtmZklEb5oXpWjrSzAY5y0rFlvBprszCd4kbyXeIBaUHEF3hb7uBYzqI-xJQWVds6X3cWgqZtxnhVk5qF8YDyUnD-tQb-iNHLz-5RwJtMF1xqBHzdXxkoqG9xEWEdEQQ-_cbjCgBzblGCHr1cvdR2Yz31AF_LjveXw0r-8_9LJ14n-E8NxTQnEs2M-KwG1nTAjhutyDEHUu2RcATbiaYZSnLWAAuQmk1yozYY_TpWOeLldSqjP5qfTnf2fiuh9BEOd_k7EiUCzDlcFlGZ4ObOPIqUFjsW9IwcxXQKxP3NIVhszzVMU7rGfmYlF21Cmtu7IvaEmA",
+                        testPerson2: "eyJraWQiOiIxMjM0NSIsImFsZyI6IlJTMjU2In0.eyJpc3MiOiJ0ZXN0SXNzdWVyIiwic3ViIjoiMzc2NzlmM2MtNzI2MC00MzMyLWIzNTQtMzE0ZDRjYjdhOGZkIiwiZXhwIjoxNzQyOTA1MjE2LCJpYXQiOjE3NDI0NzMyMTZ9.L6yFFjKxhWswhv5kw9JRsg92C8UTZdqmAqCxH5dSEuJz6x6f53iMUd_bwEFW-6G9QU_1u10uVPlNuBB_FNyR_qy_onM3ihI0jjhy86jwnNb7jh1uPH8mrsqkFVp2Zc9Tv-GHBoYvHGNkuPdqIe6VsjtMrhnCBfNcGhkJoQFqOWoSITgP-kxIiF0s73DAdoeY1B9UMXCEDM_AVIMIT1d4wnJECxognqtRSzGDuyW3jAMz_-d8Sf_9pmEoGFmH2aCIaJ5yMNVaFzFVfQA0oLewtrwqQYDt2ZMFNuYuvoL6VTSpleQ1lXLt6L-VgygLL3PEFOe4XcxikUGIRXXGeiwxoA",
+                    };
+
+                    // Get UUID for selected user
+                    const uuid = uuids[selectedPerson] || "";
+
+                    // Get JWT for selected user
+                    const jwtToken = jwtTokens[selectedPerson] || "";
+
+                    console.log('UUID: ' + uuid);
+                    console.log('JWT Token: ' + jwtToken);
+
+                    embeddedservice_bootstrap.settings.language = 'en_US';
+
+                    window.addEventListener("onEmbeddedMessagingReady", () => {
+                        console.log("onEmbeddedMessagingReady event");
+        
+                        embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+                            identityTokenType: "JWT",
+                            identityToken: jwtToken
+                        });
+        
+                        embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
+                            "Skill_Brand": skillBrand,
+                            "Skill_Country": skillCountry,
+                            "Skill_Entity": skillEntity,
+                            "Skill_Language": skillLanguage,
+                            "Skill_Segmentation": skillSegmentation,
+                            "Skill_Topic": skillTopic,
+                            "UUID": uuid
+                        });
+                    });
+
+                    embeddedservice_bootstrap.init(
+                        '00DPw0000092B8g',
+                        'Test_MIAW_GIT',
+                        'https://tipico--miaw.sandbox.my.site.com/ESWTestMIAWGIT1741941825256',
+                        {
+                            scrt2URL: 'https://tipico--miaw.sandbox.my.salesforce-scrt.com'
+                        }
+                    );
+
+                } catch (err) {
+                    console.error('Error loading Embedded Messaging: ', err);
+                }
+            }
+        </script>
+
+        <script type='text/javascript' src='https://tipico--miaw.sandbox.my.site.com/ESWTestMIAWGIT1741941825256/assets/js/bootstrap.min.js'></script>
+    </body>
 </html>
