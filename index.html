@@ -161,7 +161,10 @@
                     window.addEventListener("onEmbeddedMessagingReady", () => {
                         console.log("onEmbeddedMessagingReady event");
 
-                        embeddedservice_bootstrap.userVerificationAPI.clearSession(true);
+                        if (!sessionCleared) {
+                            embeddedservice_bootstrap.userVerificationAPI.clearSession(true);
+                            sessionCleared = true;
+                        }
         
                         embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
                             identityTokenType: "JWT",
