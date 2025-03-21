@@ -116,6 +116,8 @@
         <script type="text/javascript">
             function initEmbeddedMessaging() {
                 try {
+                    embeddedservice_bootstrap.userVerificationAPI.clearSession(true);
+                    
                     // Disable button
                     document.getElementById("startChatBtn").disabled = true;
 
