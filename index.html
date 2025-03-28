@@ -114,6 +114,30 @@
         </div>
 
         <script type="text/javascript">
+            function clearAllCaches(){
+                // Clear Local Storage
+                localStorage.clear();
+
+                // Clear Session Storage
+                sessionStorage.clear();
+
+                // Clear Cookies
+                document.cookie.split(";").forEach(cookie => {
+                    document.cookie = cookie
+                        .replace(/^ +/, "")
+                        .replace(/=.*/, "=;expires=" + new Date(0).toUTCString() + ";path=/");
+                });
+
+                // Clear Cache Storage (Service Worker caches)
+                if ('caches' in window) {
+                    caches.keys().then(cacheNames => {
+                        cacheNames.forEach(name => {
+                            caches.delete(name);
+                        });
+                    });
+                }
+            }
+            
             function initEmbeddedMessaging() {
                 try {    
                     // Disable button
@@ -200,6 +224,10 @@
                     console.error('Error loading Embedded Messaging: ', err);
                 }
             }
+
+            window.addEventListener("beforeunload", function () {
+                clearAllCaches();
+            });
         </script>
 
         <script type='text/javascript' src='https://tipico--miaw.sandbox.my.site.com/ESWTestMIAWGIT1741941825256/assets/js/bootstrap.min.js'></script>
