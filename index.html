@@ -194,10 +194,16 @@
                         console.log("onEmbeddedMessagingReady event");
                         
                         console.log('AUTH...');
-                        embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
-                            identityTokenType: "JWT",
-                            identityToken: jwtToken
-                        });
+                        if(jwtToken !== ""){
+                            embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+                                identityTokenType: "JWT",
+                                identityToken: jwtToken
+                            });
+                        }
+                        //embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+                        //    identityTokenType: "JWT",
+                        //    identityToken: jwtToken
+                        //});
 
                         console.log('SET PRE CHAT...');
                         embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
@@ -217,14 +223,34 @@
                         embeddedservice_bootstrap.userVerificationAPI.clearSession(true);
                     });
 
-                    embeddedservice_bootstrap.init(
-                        '00DPw0000092B8g',
-                        'Test_MIAW_GIT',
-                        'https://tipico--miaw.sandbox.my.site.com/ESWTestMIAWGIT1741941825256',
-                        {
-                            scrt2URL: 'https://tipico--miaw.sandbox.my.salesforce-scrt.com'
-                        }
-                    );
+                    if(jwtToken !== ""){
+                        embeddedservice_bootstrap.init(
+                            '00DPw0000092B8g',
+                            'Test_MIAW_GIT',
+                            'https://tipico--miaw.sandbox.my.site.com/ESWTestMIAWGIT1741941825256',
+                            {
+                                scrt2URL: 'https://tipico--miaw.sandbox.my.salesforce-scrt.com'
+                            }
+                        );
+                    }
+                    else{
+                        embeddedservice_bootstrap.init(
+                            '00DPw0000092B8g',
+                            'Test_MIAW_GIT_UnAuth',
+                            'https://tipico--miaw.sandbox.my.site.com/ESWTestMIAWGITUnAuth1743158201311',
+                            {
+                                scrt2URL: 'https://tipico--miaw.sandbox.my.salesforce-scrt.com'
+                            }
+                        );
+                    }
+                    //embeddedservice_bootstrap.init(
+                    //    '00DPw0000092B8g',
+                    //    'Test_MIAW_GIT',
+                    //    'https://tipico--miaw.sandbox.my.site.com/ESWTestMIAWGIT1741941825256',
+                    //    {
+                    //        scrt2URL: 'https://tipico--miaw.sandbox.my.salesforce-scrt.com'
+                    //    }
+                    //);
 
                 } catch (err) {
                     console.error('Error loading Embedded Messaging: ', err);
@@ -237,5 +263,6 @@
         </script>
 
         <script type='text/javascript' src='https://tipico--miaw.sandbox.my.site.com/ESWTestMIAWGIT1741941825256/assets/js/bootstrap.min.js'></script>
+        <script type='text/javascript' src='https://tipico--miaw.sandbox.my.site.com/ESWTestMIAWGITUnAuth1743158201311/assets/js/bootstrap.min.js'></script>
     </body>
 </html>
