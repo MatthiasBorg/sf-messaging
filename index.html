@@ -31,7 +31,7 @@
                 <select id="personSelect" class="form-select">
                     <option value="testPerson1">Test Person 1</option>
                     <option value="testPerson2">Test Person 2</option>
-                    <!-- <option value="Unknown">Unknown</option> -->
+                    <option value="Unknown">Unknown</option>
                 </select>
             </div>
 
@@ -143,6 +143,14 @@
                     });
                 }
             }
+
+            function generateDeviceId(){
+                return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+                    const r = Math.random() * 16 | 0;
+                    const v = c === 'x' ? r : (r & 0x3 | 0x8);
+                    return v.toString(16);
+                });
+            }
             
             function initEmbeddedMessaging() {
                 try {    
@@ -198,6 +206,52 @@
                             identityTokenType: "JWT",
                             identityToken: jwtToken
                         });
+
+                        let deviceId = localStorage.getItem('deviceId');
+                        if (!deviceId) {
+                            deviceId = generateDeviceId();
+                            localStorage.setItem('deviceId', deviceId);
+                        }
+
+                        if(jwtToken == ""){
+                            const headers = new Headers();
+                            headers.append('content-type', 'application/json');
+
+                            const body = `{
+                                "orgId": "00DPw0000092B8g",
+                                "esDeveloperName": "MIAW_SBR_Test",
+                                "capabilitiesVersion": "1",
+                                "platform": "Web",
+                                "deviceId": deviceId,
+                                "context": {
+                                    "appName": "Sports App",
+                                    "clientVersion": "1.2.3"
+                                }
+                            }`;
+
+                            const init = {
+                                method: 'POST',
+                                headers,
+                                body
+                            };
+
+                            fetch('https://https://tipico--miaw.sandbox.my.salesforce-scrt.com/iamessage/api/v2/authorization/unauthenticated/access-token', init)
+                                .then((response) => {
+                                    return response.json(); // or .text() or .blob() ...
+                                })
+                                .then((text) => {
+                                    // text is the response body
+                                })
+                                .catch((e) => {
+                                    // error in e.message
+                                });
+                        }
+                        else{
+                            embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
+                                dentityTokenType: "JWT",
+                                identityToken: jwtToken
+                            });
+                        }
 
                         console.log('SET PRE CHAT...');
                         embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
