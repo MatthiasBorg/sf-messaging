@@ -217,17 +217,17 @@
                             const headers = new Headers();
                             headers.append('content-type', 'application/json');
 
-                            const body = `{
-                                "orgId": "00DPw0000092B8g",
-                                "esDeveloperName": "MIAW_SBR_Test",
-                                "capabilitiesVersion": "1",
-                                "platform": "Web",
-                                "deviceId": deviceId,
-                                "context": {
-                                    "appName": "Sports App",
-                                    "clientVersion": "1.2.3"
+                            const body = JSON.stringify({
+                                orgId: "00DPw0000092B8g",
+                                esDeveloperName: "MIAW_SBR_Test",
+                                capabilitiesVersion: "1",
+                                platform: "Web",
+                                deviceId: deviceId,
+                                context: {
+                                    appName: "Sports App",
+                                    clientVersion: "1.2.3"
                                 }
-                            }`;
+                            });
 
                             const init = {
                                 method: 'POST',
