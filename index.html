@@ -146,11 +146,39 @@
                     });
                 }
             }
+
+            function updatePersonBadge() {
+                const selected = document.getElementById("personSelect").value;
+                const badge = document.getElementById("selectedPersonBadge");
+
+                let badgeColorClass = "bg-secondary text-white";
+                let personLabel = "Unknown";
+
+                if (selected === "testPerson1") {
+                    badgeColorClass = "bg-primary text-white";
+                    personLabel = "Test Person 1";
+                } else if (selected === "testPerson2") {
+                    badgeColorClass = "bg-success text-white";
+                    personLabel = "Test Person 2";
+                }
+                
+                badge.className = `text-center py-2 mb-3 fw-semibold rounded ${badgeColorClass}`;
+                badge.innerText = `Selected: ${personLabel}`;
+                badge.style.display = "block";
+            }
             
             function initEmbeddedMessaging() {
                 try {    
                     // Disable button
                     document.getElementById("startChatBtn").disabled = true;
+
+                    const selectedPerson = document.getElementById("personSelect").value;
+                    const skillBrand = document.getElementById("skillBrand").value;
+                    const skillCountry = document.getElementById("skillCountry").value;
+                    const skillEntity = document.getElementById("skillEntity").value;
+                    const skillLanguage = document.getElementById("skillLanguage").value;
+                    const skillSegmentation = document.getElementById("skillSegmentation").value;
+                    const skillTopic = document.getElementById("skillTopic").value;
 
                     const badge = document.getElementById("selectedPersonBadge");
                     
@@ -169,14 +197,6 @@
                     badge.className = `text-center py-2 mb-3 fw-semibold rounded ${badgeColorClass}`;
                     badge.innerText = `Using: ${personLabel}`;
                     badge.style.display = "block";
-
-                    const selectedPerson = document.getElementById("personSelect").value;
-                    const skillBrand = document.getElementById("skillBrand").value;
-                    const skillCountry = document.getElementById("skillCountry").value;
-                    const skillEntity = document.getElementById("skillEntity").value;
-                    const skillLanguage = document.getElementById("skillLanguage").value;
-                    const skillSegmentation = document.getElementById("skillSegmentation").value;
-                    const skillTopic = document.getElementById("skillTopic").value;
 
                     console.log('Selected Person: ' + selectedPerson);
                     console.log('Skill Brand: ' + skillBrand);
@@ -278,25 +298,11 @@
                 }
             }
 
-            document.getElementById("personSelect").addEventListener("change", function (){
-                const selected = this.value;
-                const badge = document.getElementById("selectedPersonBadge");
-
-                let badgeColorClass = "bg-secondary text-white";
-                let personLabel = "Unknown";
-
-                if (selected === "testPerson1") {
-                    badgeColorClass = "bg-primary text-white";
-                    personLabel = "Test Person 1";
-                } else if (selected === "testPerson2") {
-                    badgeColorClass = "bg-success text-white";
-                    personLabel = "Test Person 2";
-                }
-
-                badge.className = `text-center py-2 mb-3 fw-semibold rounded ${badgeColorClass}`;
-                badge.innerText = `Selected: ${personLabel}`;
-                badge.style.display = "block";
-            });
+            // Update badge immediately on page load
+            window.addEventListener("DOMContentLoaded", updatePersonBadge);
+            
+            // Update badge every time the dropdown changes
+            document.getElementById("personSelect").addEventListener("change", updatePersonBadge);
 
             window.addEventListener("beforeunload", function () {
                 clearAllCaches();
