@@ -34,6 +34,7 @@
                 <select id="personSelect" class="form-select">
                     <option value="testPerson1">Test Person 1</option>
                     <option value="testPerson2">Test Person 2</option>
+                    <option value="testPerson2">Test Person 3</option>
                     <option value="Unknown">Unknown</option>
                 </select>
             </div>
@@ -161,6 +162,10 @@
                     badgeColorClass = "bg-success text-white";
                     personLabel = "Test Person 2";
                 }
+                 else if (selected === "testPerson3") {
+                    badgeColorClass = "bg-warning";
+                    personLabel = "Test Person 3";
+                }
                 
                 badge.className = `text-center py-2 mb-3 fw-semibold rounded ${badgeColorClass}`;
                 badge.innerText = `Selected: ${personLabel}`;
@@ -193,6 +198,10 @@
                         badgeColorClass = "bg-success text-white";
                         personLabel = "Test Person 2";
                     }
+                     else if (selectedPerson === "testPerson3") {
+                        badgeColorClass = "bg-warning";
+                        personLabel = "Test Person 3";
+                    }
                     
                     badge.className = `text-center py-2 mb-3 fw-semibold rounded ${badgeColorClass}`;
                     badge.innerText = `Using: ${personLabel}`;
@@ -210,12 +219,14 @@
                     const uuids = {
                         testPerson1: "d4cd8366-88e7-492f-84fa-baeda4f4fe6e",
                         testPerson2: "37679f3c-7260-4332-b354-314d4cb7a8fd",
+                        testPerson2: "65e097f3-6112-44a0-9dc7-3de500696375",
                     };
 
                     // JWT Mapping for each user
                     const jwtTokens = {
                         testPerson1: "eyJraWQiOiIxMjM0NSIsImFsZyI6IlJTMjU2In0.eyJpc3MiOiJ0ZXN0SXNzdWVyIiwic3ViIjoiZDRjZDgzNjYtODhlNy00OTJmLTg0ZmEtYmFlZGE0ZjRmZTZlIiwiZXhwIjoxNzQ3NDcxNzI4LCJpYXQiOjE3NDMxNTE3Mjh9.ARgnfH0XEdsJRnP4TwRc9W-vLVJohc3EzkZdlQ3AH7FePQHP6xE7E-yIV-OXbwpe5m90TtntwVggXvJ4kaeZorvW_k03VBAGb6Lqr1lwMYfQsoQaeGMV40JWLAU_ljKrnfz4j_WxYfiImT0B86vgnP5E8-r0vc3SDyRSYpmdAP1M3vd0EN0qL2GnhcbR9uFUcD19YCAq3d3b87ceD-94oL-5TRVVhrb8sSVzKr8wJXuYHTCx8v-vTldapXk1fE3TKZDQOk3OK533yv7FqaC4Wt20xNTlFSIzSfjm9jpWOUenSyG6HVTG--CowOq0rdI0O-yesP31x_HAN3y2fpZ7Uw",
                         testPerson2: "eyJraWQiOiIxMjM0NSIsImFsZyI6IlJTMjU2In0.eyJpc3MiOiJ0ZXN0SXNzdWVyIiwic3ViIjoiMzc2NzlmM2MtNzI2MC00MzMyLWIzNTQtMzE0ZDRjYjdhOGZkIiwiZXhwIjoxNzQ3NDcxNzQyLCJpYXQiOjE3NDMxNTE3NDJ9.t0yf5_cnMUwj38yn8GGgzAJXEaPIs4s6s8DaX2OMe_rQzAmbKXcKUOoZ_DiP7lsxYfcwwkZ_YOnCIgdPjrYtuuSoVHoHCHRRiDMh0w2EN9evlyq_x3KPauU0couB5wXbizXu95gzxj41-QmH78rNn7NBQPXhW5hDfwPBhfxp_1i08kPro9qLcUvCVwfcQRe9qRCgL3ETjUz2lG559G44AEi3YD8tbSD9P604G38RDfIJH9c4eMERxY7Ff2d4x-0Xvaj9j0kmclWYGsgzOEtjyrvLI4Ec5trpr8CExI00yP9hiq88YVl-Yi0rth0cTP-xrUSs-vhKEGbhESvtcojlgw",
+                        testPerson3: "eyJraWQiOiIxMjM0NSIsImFsZyI6IlJTMjU2In0.eyJpc3MiOiJ0ZXN0SXNzdWVyIiwic3ViIjoiNjVlMDk3ZjMtNjExMi00NGEwLTlkYzctM2RlNTAwNjk2Mzc1IiwiZXhwIjoxNzQ4NDIyNTUzLCJpYXQiOjE3NDQxMDI1NTN9.tdMDmk5sk43O8UKgwTEpRERMDXoIxnFV34ftY-Y532w6b2Wva7EkqioFDBYqM0nkpnz23MqyQZ2ygpxcr7HeXs3m6MSu7-77xZbJnBxN2DrCC0YovasT1FJb0Z5mguRPL4KR3JMrB9fzYWmSI6fItpdkb0WS11Ia197_QGNir5g0_f2sTuuHtFZ3mwkXLICQw4kukn3--3-vnpfOfMTau7893pcumg4tKYx_O-fevYiOBOZfq7u8TZf1CGL2CKs1z9P3LQfff9oL8ArN7JXc-_IP38NKFnshnOdzCb-k7DZFe3xA-ycjnWpuq5XzzSmLAuSnyFPsCbLF7vyfby30mQ",
                     };
 
                     // Get UUID for selected user
