@@ -124,8 +124,8 @@
             var jq = $.noConflict();
             jq(document).ready(function(){
                 alert("1");
-                jq('#fileSelectInput').change(function () {
-                    var ext = jq('#fileSelectInput').val().split('.').pop().toLowerCase();
+                jq('#fileAttachmentButtonInput-24').change(function () {
+                    var ext = jq('#fileAttachmentButtonInput-24').val().split('.').pop().toLowerCase();
                     if(jq.inArray(ext, ['txt']) == -1) {
                         alert('This is not an allowed file type.');
                         this.value = "";
