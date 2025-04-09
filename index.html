@@ -116,8 +116,23 @@
             <!-- Start Chat Button -->
             <button id="startChatBtn" class="btn btn-primary w-100" onclick="initEmbeddedMessaging()">Start Chat</button>
         </div>
-
+        
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
         <script type="text/javascript">
+
+            // TO CHECK FILE TYPES
+            var jq = $.noConflict();
+            jq(document).ready(function(){
+                alert("1");
+                jq('#fileSelectInput').change(function () {
+                    var ext = jq('#fileSelectInput').val().split('.').pop().toLowerCase();
+                    if(jq.inArray(ext, ['txt']) == -1) {
+                        alert('This is not an allowed file type.');
+                        this.value = "";
+                    }
+                });
+            });
+            
             function clearAllCaches(){
 
                 alert("ATTN: CLEARING SESSION AND CACHE!");
