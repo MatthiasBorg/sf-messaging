@@ -304,6 +304,13 @@
                       console.log("Event detail: ", event.detail);
                     
                       // Do something...
+
+                        setTimeout(function() {
+                            const fileInput = document.getElementById('fileAttachmentButtonInput-24');
+                            if (fileInput) {
+                                fileInput.setAttribute('accept', 'text/plain');
+                            }
+                        }, 200);
                     });
 
                     if(jwtToken !== ""){
