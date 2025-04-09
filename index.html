@@ -321,8 +321,15 @@
                     //    }
                     //);
 
-                    const fileInput = document.getElementById('fileAttachmentButtonInput-24');
-                    fileInput.setAttribute('accept', 'text/plain');
+                    button.addEventListener('click', function() {
+                    // Delay the execution to ensure the input element is created
+                    setTimeout(function() {
+                        const fileInput = document.getElementById('fileAttachmentButtonInput-24');
+                        if (fileInput) {
+                            // Change the accept attribute to only allow text files
+                            fileInput.setAttribute('accept', 'text/plain, text/csv, text/xml');
+                        }
+                    }, 100);
 
                 } catch (err) {
                     console.error('Error loading Embedded Messaging: ', err);
