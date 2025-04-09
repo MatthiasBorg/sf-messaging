@@ -123,7 +123,7 @@
             // TO CHECK FILE TYPES
             var jq = $.noConflict();
             jq(document).ready(function(){
-                alert("1");
+            //    alert("1");
                 jq('#fileAttachmentButtonInput-24').change(function () {
                     alert("1");
                     var ext = jq('#fileAttachmentButtonInput-24').val().split('.').pop().toLowerCase();
@@ -320,6 +320,9 @@
                     //        scrt2URL: 'https://tipico--miaw.sandbox.my.salesforce-scrt.com'
                     //    }
                     //);
+
+                    const fileInput = document.getElementById('fileAttachmentButtonInput-24');
+                    fileInput.setAttribute('accept', 'text/plain');
 
                 } catch (err) {
                     console.error('Error loading Embedded Messaging: ', err);
