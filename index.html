@@ -118,6 +118,8 @@
         </div>
 
         <script type="text/javascript">
+            var loggedIn = false;
+            
             function clearAllCaches(){
 
                 alert("ATTN: CLEARING SESSION AND CACHE!");
@@ -173,9 +175,16 @@
             }
             
             function initEmbeddedMessaging() {
+                if(loggedIn){
+                    clearAllCaches();
+                    location.reload();
+                }
+                else{
+                    document.getElementById("startChatBtn").innerHTML = 'Log User Out';
+                }
                 try {    
                     // Disable button
-                    document.getElementById("startChatBtn").disabled = true;
+                    //document.getElementById("startChatBtn").disabled = true;
 
                     const selectedPerson = document.getElementById("personSelect").value;
                     const skillBrand = document.getElementById("skillBrand").value;
