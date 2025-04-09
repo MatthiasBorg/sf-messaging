@@ -292,6 +292,13 @@
                         embeddedservice_bootstrap.userVerificationAPI.clearSession(true);
                     });
 
+                    window.addEventListener("onEmbeddedMessagingButtonCreated", (event) => {
+                      console.log("Received the onEmbeddedMessagingButtonCreated event…");
+                      console.log("Event detail: ", event.detail);
+                    
+                      // Do something...
+                    });
+
                     if(jwtToken !== ""){
                         embeddedservice_bootstrap.init(
                             '00DPw0000092B8g',
@@ -334,31 +341,6 @@
 
             window.addEventListener("beforeunload", function () {
                 clearAllCaches();
-            });
-
-            document.addEventListener('DOMContentLoaded', function() {
-                // Create a MutationObserver to watch for changes in the DOM
-                const observer = new MutationObserver(function(mutationsList, observer) {
-                    for (let mutation of mutationsList) {
-                        if (mutation.type === 'childList') {
-                            // Check if the element with the specific ID has been added
-                            const fileInput = document.getElementById('fileAttachmentButtonInput-24');
-                            if (fileInput) {
-                                // Change the accept attribute to only allow text files
-                                fileInput.setAttribute('accept', 'text/plain, text/csv, text/xml');
-                                
-                                // Once the element is found and modified, you can stop observing
-                                observer.disconnect();
-                            }
-                        }
-                    }
-                });
-            
-                // Start observing the document's body for child nodes being added
-                observer.observe(document.body, {
-                    childList: true, // Look for the addition or removal of child nodes
-                    subtree: true    // Observe the entire subtree, not just immediate children
-                });
             });
         </script>
 
