@@ -117,7 +117,6 @@
             <button id="startChatBtn" class="btn btn-primary w-100" onclick="initEmbeddedMessaging()">Start Chat</button>
         </div>
         
-        <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
         <script type="text/javascript">
             function clearAllCaches(){
 
@@ -176,7 +175,7 @@
             function initEmbeddedMessaging() {
                 try {    
                     // Disable button
-                    //document.getElementById("startChatBtn").disabled = true;
+                    document.getElementById("startChatBtn").disabled = true;
 
                     const selectedPerson = document.getElementById("personSelect").value;
                     const skillBrand = document.getElementById("skillBrand").value;
@@ -240,10 +239,6 @@
                     console.log('JWT Token: ' + jwtToken);
 
                     embeddedservice_bootstrap.settings.language = 'en_US';
-                    embedded_svc.settings.fileUpload = {
-                        allowedFileTypes: ['txt'],
-                        //maxFileSize: 5242880 // 5MB in bytes
-                    };
 
                     let sessionCleared = false;
 
