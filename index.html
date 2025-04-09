@@ -306,11 +306,14 @@
                       // Do something...
 
                         setTimeout(function() {
+                            console.log('Starting file type change...');
                             const fileInput = document.getElementById('fileAttachmentButtonInput-24');
                             if (fileInput) {
+                                console.log('Id found changing its file type...');
                                 fileInput.setAttribute('accept', 'text/plain');
+                                console.log('File type should now be changed...');
                             }
-                        }, 200);
+                        }, 30000);
                     });
 
                     if(jwtToken !== ""){
