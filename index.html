@@ -238,7 +238,12 @@
                     console.log('UUID: ' + uuid);
                     console.log('JWT Token: ' + jwtToken);
 
-                    embeddedservice_bootstrap.settings.language = 'en_US';
+                    if(skillLanguage == 'German'){
+                        embeddedservice_bootstrap.settings.language = 'de';
+                    }
+                    else{
+                        embeddedservice_bootstrap.settings.language = 'en_US';
+                    }
 
                     let sessionCleared = false;
 
