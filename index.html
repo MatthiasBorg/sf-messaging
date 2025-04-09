@@ -299,6 +299,13 @@
                       // Do something...
                     });
 
+                    window.addEventListener("onEmbeddedMessagingButtonClicked", (event) => {
+                      console.log("Received the onEmbeddedMessagingButtonClicked event…");
+                      console.log("Event detail: ", event.detail);
+                    
+                      // Do something...
+                    });
+
                     if(jwtToken !== ""){
                         embeddedservice_bootstrap.init(
                             '00DPw0000092B8g',
