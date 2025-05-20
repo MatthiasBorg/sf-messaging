@@ -277,6 +277,17 @@
                     window.addEventListener("onEmbeddedMessagingConversationRouted", (event) => {
                         console.log("Received the onEmbeddedMessagingConversationRouted event…");
                         console.log("Event detail: ", event.detail);
+
+                        let messagingSessionKey = '';
+                        
+                        try{
+                            const payload = JSON.parse(event.detail.conversationEntry.entryPayload);
+                            messagingSessionKey = payload.recordId;
+                        } catch (error) {
+                            console.error('Error extracting record ID:', error);
+                        }
+
+                        console.log("messagingSessionKey: ", messagingSessionKey);
                         
                         // Do something...
                     });
