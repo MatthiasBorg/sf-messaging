@@ -274,12 +274,6 @@
                         });
                     });
 
-                    window.addEventListener( "onEmbeddedMessagingConversationClosed", () => {
-                        console.log( "Inside Conversation End" );
-                        
-                        embeddedservice_bootstrap.userVerificationAPI.clearSession(true);
-                    });
-
                     if(jwtToken !== ""){
                         embeddedservice_bootstrap.init(
                             '00DPw0000092B8g',
