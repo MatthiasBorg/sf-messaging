@@ -275,6 +275,7 @@
                     });
 
                     if(jwtToken !== ""){
+                        console.log('INIT - UnAuth');
                         embeddedservice_bootstrap.init(
                             '00DPw0000092B8g',
                             'Test_MIAW_GIT',
@@ -285,6 +286,7 @@
                         );
                     }
                     else{
+                        console.log('INIT - Auth');
                         embeddedservice_bootstrap.init(
                             '00DPw0000092B8g',
                             'Test_MIAW_GIT_UnAuth',
