@@ -281,6 +281,34 @@
                         // Do something...
                     });
 
+                    window.addEventListener("onEmbeddedMessagingConversationRouted", (event) => {
+                        console.log("Received the onEmbeddedMessagingConversationRouted event…");
+                        console.log("Event detail: ", event.detail);
+                        
+                        // Do something...
+                    });
+
+                    window.addEventListener("onEmbeddedMessagingConversationRouted", (event) => {
+                        console.log("Received the onEmbeddedMessagingConversationRouted event…");
+                        console.log("Event detail: ", event.detail);
+                        
+                        // Do something...
+                    });
+
+                    window.addEventListener("onEmbeddedMessagingTranscriptRequested", (event) => {
+                        console.log("Received the onEmbeddedMessagingTranscriptRequested event…");
+                        console.log("Event detail: ", event.detail);
+                        
+                        // Do something...
+                    });
+
+                    window.addEventListener("onEmbeddedMessagingConversationClosed", (event) => {
+                        console.log("Received the onEmbeddedMessagingConversationClosed event…");
+                        console.log("Event detail: ", event.detail);
+                        
+                        // Do something...
+                    });
+
                     if(jwtToken !== ""){
                         console.log('INIT - Auth');
                         embeddedservice_bootstrap.init(
