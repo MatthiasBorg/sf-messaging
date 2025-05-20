@@ -274,6 +274,13 @@
                         });
                     });
 
+                    window.addEventListener("onEmbeddedMessagingConversationStarted", (event) => {
+                        console.log("Received the onEmbeddedMessagingConversationStarted event…");
+                        console.log("Event detail: ", event.detail);
+                        
+                        // Do something...
+                    });
+
                     if(jwtToken !== ""){
                         console.log('INIT - Auth');
                         embeddedservice_bootstrap.init(
@@ -302,27 +309,6 @@
                 }
             }
 
-            window.addEventListener("onEmbeddedMessagingPreChatLoaded", (event) => {
-                console.log("Received the onEmbeddedMessagingPreChatLoaded event…");
-                console.log("Event detail: ", event.detail);
-                
-                // Do something...
-            });
-
-            window.addEventListener("onEmbeddedMessagingPreChatSubmitted", (event) => {
-                console.log("Received the onEmbeddedMessagingPreChatSubmitted event…");
-                console.log("Event detail: ", event.detail);
-                
-                // Do something...
-            });
-
-            window.addEventListener("onEmbeddedMessagingConversationStarted", (event) => {
-                console.log("Received the onEmbeddedMessagingConversationStarted event…");
-                console.log("Event detail: ", event.detail);
-                
-                // Do something...
-            });
-
             // Update badge immediately on page load
             window.addEventListener("DOMContentLoaded", updatePersonBadge);
             
@@ -335,6 +321,6 @@
         </script>
 
         <script type='text/javascript' src='https://tipico--miaw.sandbox.my.site.com/ESWTestMIAWGIT1741941825256/assets/js/bootstrap.min.js'></script>
-        <!--<script type='text/javascript' src='https://tipico--miaw.sandbox.my.site.com/ESWTestMIAWGITUnAuth1743158201311/assets/js/bootstrap.min.js'></script>-->
+        <script type='text/javascript' src='https://tipico--miaw.sandbox.my.site.com/ESWTestMIAWGITUnAuth1743158201311/assets/js/bootstrap.min.js'></script>
     </body>
 </html>
