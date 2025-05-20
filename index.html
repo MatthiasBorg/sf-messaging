@@ -280,6 +280,13 @@
                         embeddedservice_bootstrap.userVerificationAPI.clearSession(true);
                     });
 
+                    window.addEventListener("onEmbeddedMessagingConversationStarted", (event) => {
+                        console.log("Received the onEmbeddedMessagingConversationStarted event…");
+                        console.log("Event detail: ", event.detail);
+                        
+                        // Do something...
+                    });
+
                     if(jwtToken !== ""){
                         embeddedservice_bootstrap.init(
                             '00DPw0000092B8g',
