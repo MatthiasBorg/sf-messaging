@@ -113,6 +113,12 @@
                 </datalist>
             </div>
 
+            <!-- Route to AI -->
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="routeToAI">
+                <label class="form-check-label" for="routeToAI">Route to AI</label>
+            </div>
+            
             <!-- Start Chat Button -->
             <button id="startChatBtn" class="btn btn-primary w-100" onclick="initEmbeddedMessaging()">Start Chat</button>
         </div>
@@ -184,6 +190,7 @@
                     const skillLanguage = document.getElementById("skillLanguage").value;
                     const skillSegmentation = document.getElementById("skillSegmentation").value;
                     const skillTopic = document.getElementById("skillTopic").value;
+                    const routeToAI = document.getElementById("routeToAI").checked ? "TRUE" : "FALSE";
 
                     const badge = document.getElementById("selectedPersonBadge");
                     
@@ -214,6 +221,7 @@
                     console.log('Skill Language: ' + skillLanguage);
                     console.log('Skill Segmentation: ' + skillSegmentation);
                     console.log('Skill Topic: ' + skillTopic);
+                    console.log('Route to AI: ' + routeToAI);
 
                     // UUID Mapping for each user
                     const uuids = {
@@ -270,6 +278,7 @@
                             "Skill_Language": skillLanguage,
                             "Skill_Segmentation": skillSegmentation,
                             "Skill_Topic": skillTopic,
+                            "Route_To_AI": routeToAI,
                             "UUID": uuid
                         });
                     });
